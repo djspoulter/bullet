@@ -12,5 +12,5 @@ RUN apk update \
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /var/www/bullet-static
 
-VOLUME ["/var/www/bullet-static"]
+VOLUME ["/var/www/static"]
 EXPOSE 80
