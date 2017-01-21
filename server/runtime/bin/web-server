@@ -1,0 +1,7 @@
+#!/bin/sh
+. ${SERVER_ROOT}/runtime/lib/bootstrap.sh
+
+wait_until_db_is_ready
+python ${SERVER_ROOT}/manage.py migrate --noinput
+python ${SERVER_ROOT}/manage.py collectstatic --noinput
+python ${SERVER_ROOT}/manage.py runserver 0.0.0.0:8000
