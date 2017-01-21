@@ -8,10 +8,11 @@ RUN apk update \
 
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
+RUN mkdir -p /var/www/bullet-static
 WORKDIR /code
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
 
-ADD . /code/
-
 VOLUME ['/var/www/bullet-static']
+
+ADD . /code/
