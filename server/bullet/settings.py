@@ -126,3 +126,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.environ['STATIC_ROOT']
+STATICFILES_STORAGE = \
+    'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
+CACHES = {
+    'staticfiles': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'staticfiles',
+        'TIMEOUT': 3600 * 24 * 8,
+        'MAX_ENTRIES': 1000,
+    },
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default',
+        'TIMEOUT': 60,
+        'MAX_ENTRIES': 1000,
+    }
+}
