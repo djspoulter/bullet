@@ -21,7 +21,7 @@ services:
     links:
     - "server-side-app:web-app-server"
     ports:
-      - "127.0.0.1:8080:80"
+      - "127.0.0.1:8080:8080"
     depends_on:
       - "server-side-app"
     volumes_from:
