@@ -10,7 +10,4 @@ setup(
     author='David Poulter',
     author_email='djspoulter@gmail.com',
     description='A bullet journal.',
-    requires=[
-        'Django == 1.10.5'
-    ]
 )
