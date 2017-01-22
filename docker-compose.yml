@@ -3,7 +3,7 @@ services:
   database:
     image: "postgres:alpine"
     environment:
-      POSTGRES_PASSWORD: "password"
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - "database:/var/lib/postgresql/data"
   server-side-app:
@@ -15,7 +15,7 @@ services:
       - database
     links:
       - "database"
-    env_file: "dev.env"
+    env_file: .env
   reverse-proxy:
     build: "reverse-proxy"
     links:
