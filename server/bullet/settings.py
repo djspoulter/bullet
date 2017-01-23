@@ -86,6 +86,14 @@ DATABASES = {
     }
 }
 
+if os.getenv('BULLET_DEVELOP_MACHINE', None) == 'True':
+    DATABASES['default'] = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'develop.sqlite',
+        }
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
