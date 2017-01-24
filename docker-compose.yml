@@ -1,31 +1,31 @@
 version: '2'
 services:
   database:
-    image: "postgres:alpine"
+    image: postgres:alpine
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - "database:/var/lib/postgresql/data"
+      - database:/var/lib/postgresql/data
   server-side-app:
-    build: "server/"
-    command: "/opt/bullet/runtime/bin/web-server"
+    build: server
+    command: /opt/bullet/runtime/bin/web-server
     volumes:
-      - "./server:/opt/bullet"
+      - ./server:/opt/bullet
     depends_on:
       - database
     links:
-      - "database"
+      - database
     env_file: .env
   reverse-proxy:
-    build: "reverse-proxy"
+    build: reverse-proxy
     links:
-    - "server-side-app:web-app-server"
+    - server-side-app
     ports:
-      - "127.0.0.1:8080:8080"
+      - 127.0.0.1:8080:8080
     depends_on:
-      - "server-side-app"
+      - server-side-app
     volumes_from:
-    - "server-side-app"
+    - server-side-app
 volumes:
   database:
 

@@ -30,12 +30,15 @@ ALLOWED_HOSTS = [os.environ['ALLOWED_HOSTS']]
 # Application definition
 
 INSTALLED_APPS = [
+    'bullet.items',
+    'bullet.signifiers',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -53,8 +56,7 @@ ROOT_URLCONF = 'bullet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +87,14 @@ DATABASES = {
         },
     }
 }
+
+if os.getenv('BULLET_DEVELOP_MACHINE', None) == 'True':
+    DATABASES['default'] = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'develop.sqlite',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
