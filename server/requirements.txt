@@ -5,3 +5,5 @@ gunicorn == 19.6.0
 markdown == 2.6.7
 django-filter == 1.0.1
 djangorestframework == 3.5.3
+Sphinx == 1.5.2
+sphinx_rtd_theme == 0.1.9
