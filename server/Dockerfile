@@ -12,5 +12,8 @@ RUN apk update \
 ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /var/www/bullet-static
 
+COPY requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
+
 VOLUME ["/var/www/static"]
 EXPOSE 80
