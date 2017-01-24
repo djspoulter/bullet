@@ -22,6 +22,11 @@ class Item(models.Model):
     complete = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return 'Bullet item {}: {}'.format(
+            self.id, self.title
+        )
+
 
 class ItemSignifierRelationship(models.Model):
     signifier = models.ForeignKey(Signifier)
@@ -31,3 +36,8 @@ class ItemSignifierRelationship(models.Model):
         unique_together = [
             ['signifier', 'item'],
         ]
+
+    def __unicode__(self):
+        return '{} signifier on item {}'. format(
+            self.signifier, self.item
+        )

@@ -2,4 +2,4 @@
 
 python ${SERVER_ROOT}/manage.py migrate --noinput
 python ${SERVER_ROOT}/manage.py collectstatic --noinput
-gunicorn bullet.wsgi:application -b 0.0.0.0:80 -k gevent -w ${GEVENT_WORKERS} --chdir ${SERVER_ROOT}
+gunicorn bullet.wsgi:application -b 0.0.0.0:80 -k gevent -w ${GEVENT_WORKERS} --chdir ${SERVER_ROOT} ${GUNICORN_WATCH}

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from bullet.items.models import Item
+from bullet.items.models import Item, ItemSignifierRelationship
 
 
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,4 +13,13 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
             'cancelled',
             'type',
             'signifiers',
+            'url'
         )
+
+
+class ItemSignifierRelationshipSerializer(
+    serializers.HyperlinkedModelSerializer
+):
+    class Meta:
+        model = ItemSignifierRelationship
+        fields = '__all__'
