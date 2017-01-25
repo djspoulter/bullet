@@ -6,5 +6,5 @@ class Signifier(models.Model):
     description = models.CharField(max_length=256)
     icon = models.CharField(max_length=20)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

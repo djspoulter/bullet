@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [os.environ['ALLOWED_HOSTS']]
 # Application definition
 
 INSTALLED_APPS = [
+    'bullet.entries',
     'bullet.items',
     'bullet.signifiers',
     'django.contrib.admin',
@@ -74,25 +75,25 @@ WSGI_APPLICATION = 'bullet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USERNAME'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOSTNAME'],
-        'PORT': 5432,
-        'OPTIONS': {
-            'connect_timeout': 5,
-        },
-    }
-}
-
 if os.getenv('BULLET_DEVELOP_MACHINE', None) == 'True':
-    DATABASES['default'] = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': 'develop.sqlite',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['DB_NAME'],
+            'USER': os.environ['DB_USERNAME'],
+            'PASSWORD': os.environ['DB_PASSWORD'],
+            'HOST': os.environ['DB_HOSTNAME'],
+            'PORT': 5432,
+            'OPTIONS': {
+                'connect_timeout': 5,
+            },
         }
     }
 

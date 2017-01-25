@@ -13,7 +13,9 @@ class ItemSerializer(serializers.HyperlinkedModelSerializer):
             'cancelled',
             'type',
             'signifiers',
-            'url'
+            'entries',
+            'url',
+
         )
 
 
