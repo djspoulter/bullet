@@ -92,3 +92,4 @@ ENV/
 .gitignore
 server/bullet/__pycache__/
 server/templates/
+/server/develop.sqlite
