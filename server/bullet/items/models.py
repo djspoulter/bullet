@@ -2,7 +2,7 @@
 from django.db import models
 
 from bullet.signifiers.models import Signifier
-from utils import Choice
+from bullet.utils import Choice
 
 
 class ItemType(Choice):
@@ -22,8 +22,8 @@ class Item(models.Model):
     complete = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=True)
 
-    def __unicode__(self):
-        return 'Bullet item {}: {}'.format(
+    def __str__(self):
+        return 'Item {}: {}'.format(
             self.id, self.title
         )
 
