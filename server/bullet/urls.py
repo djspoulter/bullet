@@ -20,8 +20,13 @@ from django.contrib import admin
 from bullet.api_urls import router
 
 
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Bullet')
+
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/schema/$', schema_view)
 ]
 
