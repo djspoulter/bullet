@@ -93,3 +93,4 @@ ENV/
 server/bullet/__pycache__/
 server/templates/
 /server/develop.sqlite
+/client/node_modules/
