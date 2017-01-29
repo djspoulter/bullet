@@ -16,15 +16,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import RedirectView
+from rest_framework_swagger.views import get_swagger_view
 
 from bullet.api_urls import router
-
-
-from rest_framework_swagger.views import get_swagger_view
 
 schema_view = get_swagger_view(title='Bullet')
 
 urlpatterns = [
+    url(
+        r'^$',
+        RedirectView.as_view(url='index.html', permanent=False),
+        name='index'
+    ),
     url(r'^api/v1/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api/schema/$', schema_view)

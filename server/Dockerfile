@@ -10,7 +10,6 @@ RUN apk update \
   && apk del build-deps
 
 ENV PYTHONUNBUFFERED 1
-RUN mkdir -p /var/www/bullet-static
 
 COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt

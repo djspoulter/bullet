@@ -16,6 +16,12 @@ services:
     links:
       - database
     env_file: .env
+  client-side-app:
+    build: client
+    command: ng build --watch -o /var/www
+    volumes:
+      - ./client:/opt/bullet
+      - node_modules:/opt/bullet/node_modules
   reverse-proxy:
     build: reverse-proxy
     links:
@@ -24,8 +30,11 @@ services:
       - 127.0.0.1:8080:8080
     depends_on:
       - server-side-app
+      - client-side-app
     volumes_from:
-    - server-side-app
+      - server-side-app
+      - client-side-app
 volumes:
   database:
+  node_modules:
 
